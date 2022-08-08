@@ -29,14 +29,14 @@ node {
 		
 			dir("${WORKSPACE}/test plan") {
 			bat 'del Shift-Left.jtl'
-			bat 'C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\jmeter.bat -n -t Test_Plan3.jmx -l Shift-Left.jtl'
+			bat 'C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\jmeter.bat -n -t Test_Plan3.jmx -l C:\\Training\\Jmeter\\jmeter\\test plan\\Shift-Left.jtl'
 			 }
 		
 	}
 	stage('test response time result'){
 		
 			script{
-			perfReport errorFailedThreshold: 1, errorUnstableResponseTimeThreshold: 'Shift-Left.jtl:20', filterRegex: '', modePerformancePerTestCase: true, showTrendGraphs: true, sourceDataFiles: 'Shift-Left.jtl'
+			perfReport errorFailedThreshold: 1, errorUnstableResponseTimeThreshold: 'Shift-Left.jtl:20', filterRegex: '', modePerformancePerTestCase: true, showTrendGraphs: true, sourceDataFiles: 'C:\\Training\\Jmeter\\jmeter\\test plan\\Shift-Left.jtl'
 			echo "${currentBuild.result}"
 			}
 		
@@ -46,7 +46,7 @@ node {
 			script{
 			
 			bat 'del test1.csv'
-			bat 'C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\JMeterPluginsCMD.bat --generate-csv test1.csv --input-jtl Shift-Left.jtl --plugin-type SynthesisReport'
+			bat 'C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\JMeterPluginsCMD.bat --generate-csv test1.csv --input-jtl C:\\Training\\Jmeter\\jmeter\\test plan\\Shift-Left.jtl --plugin-type SynthesisReport'
 			
 			}
 		
