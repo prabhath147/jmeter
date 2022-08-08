@@ -1,7 +1,7 @@
 pipeline {
     agent any
 	environment {
-		OUTPUT_PATH_JTL="C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl"
+		OUTPUT_PATH_JTL="C:\\Training\\Jmeter\\jmeter\\test_plan\\Plan-1.jtl"
 		OUTPUT_PATH_CSV="C:\\Training\\Jmeter\\jmeter\\test_plan\\test1.csv"
 	}
 	stages{
@@ -41,7 +41,7 @@ pipeline {
 	stage('test response time result'){
 		steps{
 			script{
-			perfReport errorFailedThreshold: 10, errorUnstableResponseTimeThreshold: 'Shift-Left.jtl:20', filterRegex: '', modePerformancePerTestCase: true, showTrendGraphs: true, sourceDataFiles: "${OUTPUT_PATH_JTL}"
+			perfReport errorFailedThreshold: 10, errorUnstableResponseTimeThreshold: 'Plan-1.jtl:20', filterRegex: '', modePerformancePerTestCase: true, showTrendGraphs: true, sourceDataFiles: "${OUTPUT_PATH_JTL}"
 			echo "${currentBuild.result}"
 			}
 		}
