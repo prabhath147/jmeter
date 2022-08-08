@@ -18,37 +18,39 @@ pipeline {
 
 	stage('Jmeter'){
 		
-			echo 'Jmeter'
+			steps{
+                echo 'Jmeter'
+            }
 		
 	}
 	
 	stage('Jmeter test file'){
-		
+		steps{
 			dir("${WORKSPACE}\\test_plan") {
 			//bat 'del C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl'
 			bat 'C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\jmeter.bat -n -t Test_Plan3.jmx -l C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl'
 			 }
-		
+		}
 	}
 	stage('test response time result'){
-		
+		steps{
 			script{
 			perfReport errorFailedThreshold: 10, errorUnstableResponseTimeThreshold: 'Shift-Left.jtl:20', filterRegex: '', modePerformancePerTestCase: true, showTrendGraphs: true, sourceDataFiles: 'C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl'
 			echo "${currentBuild.result}"
 			}
-		
+		}
 	}
 	stage('Jmeter generate csv'){
-		
+		steps{
 			script{			
 			//bat 'del C:\\Training\\Jmeter\\jmeter\\test_plan\\test1.csv'
 			bat 'C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\JMeterPluginsCMD.bat --generate-csv C:\\Training\\Jmeter\\jmeter\\test_plan\\test1.csv --input-jtl C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl --plugin-type SynthesisReport'
 			
 			}
-		
+		}
 	}
 	stage('test throughput value'){
-		
+		steps{
 			script{
 			
 				def records = readFile file: 'C:\\Training\\Jmeter\\jmeter\\test_plan\\test1.csv'
@@ -63,15 +65,16 @@ pipeline {
 				  currentBuild.result='Failure'
 				}
 			}
+		}	
 	}
 	stage('delete Jmeter files'){
-		
+		steps{
 			dir("${WORKSPACE}\\test_plan") {
 			
 			bat 'del C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl'
 			bat 'del C:\\Training\\Jmeter\\jmeter\\test_plan\\test1.csv'
 			 }
-		
+		}
 	}
 	}
 }
