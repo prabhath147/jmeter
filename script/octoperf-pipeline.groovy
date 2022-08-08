@@ -32,8 +32,9 @@ pipeline {
 	stage('Jmeter test file'){
 		steps{
 			dir("${WORKSPACE}\\test_plan") {
+			echo "${OUTPUT_PATH_JTL}"
 			//bat 'del C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl'
-			bat 'C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\jmeter.bat -n -t Test_Plan3.jmx -l ${OUTPUT_PATH_JTL}'
+			bat "C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\jmeter.bat -n -t Test_Plan3.jmx -l ${OUTPUT_PATH_JTL}"
 			 }
 		}
 	}
@@ -49,7 +50,7 @@ pipeline {
 		steps{
 			script{			
 			//bat 'del C:\\Training\\Jmeter\\jmeter\\test_plan\\test1.csv'
-			bat 'C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\JMeterPluginsCMD.bat --generate-csv ${OUTPUT_PATH_CSV} --input-jtl ${OUTPUT_PATH_JTL} --plugin-type SynthesisReport'
+			bat "C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\JMeterPluginsCMD.bat --generate-csv ${OUTPUT_PATH_CSV} --input-jtl ${OUTPUT_PATH_JTL} --plugin-type SynthesisReport"
 			
 			}
 		}
@@ -76,8 +77,8 @@ pipeline {
 		steps{
 			dir("${WORKSPACE}\\test_plan") {
 			
-			bat 'del ${OUTPUT_PATH_JTL}'
-			bat 'del ${OUTPUT_PATH_CSV}'
+			bat "del ${OUTPUT_PATH_JTL}"
+			bat "del ${OUTPUT_PATH_CSV}"
 			 }
 		}
 	}
