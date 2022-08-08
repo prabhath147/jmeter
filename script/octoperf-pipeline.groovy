@@ -40,7 +40,7 @@ pipeline {
 	stage('test response time result'){
 		steps{
 			script{
-			perfReport errorFailedThreshold: 10, errorUnstableResponseTimeThreshold: 'Shift-Left.jtl:20', filterRegex: '', modePerformancePerTestCase: true, showTrendGraphs: true, sourceDataFiles: ${OUTPUT_PATH_JTL}'
+			perfReport errorFailedThreshold: 10, errorUnstableResponseTimeThreshold: 'Shift-Left.jtl:20', filterRegex: '', modePerformancePerTestCase: true, showTrendGraphs: true, sourceDataFiles: ${OUTPUT_PATH_JTL}
 			echo "${currentBuild.result}"
 			}
 		}
