@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-
+	stages{
     stage('Initialise') {
         /* Checkout the scripts */
         checkout scm: [
@@ -72,5 +72,6 @@ pipeline {
 			bat 'del C:\\Training\\Jmeter\\jmeter\\test_plan\\test1.csv'
 			 }
 		
+	}
 	}
 }
