@@ -32,7 +32,7 @@ node {
 	stage('test response time result'){
 		
 			script{
-			perfReport errorFailedThreshold: 1, errorUnstableResponseTimeThreshold: 'Shift-Left.jtl:20', filterRegex: '', modePerformancePerTestCase: true, showTrendGraphs: true, sourceDataFiles: 'C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl'
+			perfReport errorFailedThreshold: 10, errorUnstableResponseTimeThreshold: 'Shift-Left.jtl:20', filterRegex: '', modePerformancePerTestCase: true, showTrendGraphs: true, sourceDataFiles: 'C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl'
 			echo "${currentBuild.result}"
 			}
 		
