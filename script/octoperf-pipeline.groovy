@@ -24,7 +24,7 @@ node {
 	stage('Jmeter test file'){
 		
 			dir("${WORKSPACE}\\test_plan") {
-			bat 'del C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl'
+			//bat 'del C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl'
 			bat 'C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\jmeter.bat -n -t Test_Plan3.jmx -l C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl'
 			 }
 		
@@ -40,7 +40,7 @@ node {
 	stage('Jmeter generate csv'){
 		
 			script{			
-			bat 'del C:\\Training\\Jmeter\\jmeter\\test_plan\\test1.csv'
+			//bat 'del C:\\Training\\Jmeter\\jmeter\\test_plan\\test1.csv'
 			bat 'C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\JMeterPluginsCMD.bat --generate-csv C:\\Training\\Jmeter\\jmeter\\test_plan\\test1.csv --input-jtl C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl --plugin-type SynthesisReport'
 			
 			}
@@ -67,7 +67,8 @@ node {
 		
 			dir("${WORKSPACE}\\test_plan") {
 			bat 'cd'
-			
+			bat 'del Shift-Left.jtl'
+			bat 'del test1.csv'
 			 }
 		
 	}
