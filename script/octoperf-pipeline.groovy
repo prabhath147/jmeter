@@ -40,7 +40,7 @@ node {
 	stage('Jmeter generate csv'){
 		
 			script{
-			
+			bat 'pwd'
 			bat 'del test1.csv'
 			bat 'C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\JMeterPluginsCMD.bat --generate-csv C:\\Training\\Jmeter\\jmeter\\test_plan\\test1.csv --input-jtl C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl --plugin-type SynthesisReport'
 			
