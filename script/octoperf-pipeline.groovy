@@ -25,14 +25,14 @@ node {
 		
 			dir("${WORKSPACE}\\test_plan") {
 			bat 'del Shift-Left.jtl'
-			bat 'C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\jmeter.bat -n -t Test_Plan3.jmx -l C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl'
+			bat 'C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\jmeter.bat -n -t Test_Plan3.jmx -l Shift-Left.jtl'
 			 }
 		
 	}
 	stage('test response time result'){
 		
 			script{
-			perfReport errorFailedThreshold: 1, errorUnstableResponseTimeThreshold: 'Shift-Left.jtl:20', filterRegex: '', modePerformancePerTestCase: true, showTrendGraphs: true, sourceDataFiles: 'C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl'
+			perfReport errorFailedThreshold: 1, errorUnstableResponseTimeThreshold: 'Shift-Left.jtl:20', filterRegex: '', modePerformancePerTestCase: true, showTrendGraphs: true, sourceDataFiles: 'Shift-Left.jtl'
 			echo "${currentBuild.result}"
 			}
 		
@@ -43,7 +43,7 @@ node {
 			
 			bat 'cd'
 			bat 'del test1.csv'
-			bat 'C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\JMeterPluginsCMD.bat --generate-csv C:\\Training\\Jmeter\\jmeter\\test_plan\\test1.csv --input-jtl C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl --plugin-type SynthesisReport'
+			bat 'C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\JMeterPluginsCMD.bat --generate-csv test1.csv --input-jtl Shift-Left.jtl --plugin-type SynthesisReport'
 			
 			}
 		
@@ -52,7 +52,7 @@ node {
 		
 			script{
 			
-				def records = readFile file: 'C:\\Training\\Jmeter\\jmeter\\test_plan\\test1.csv'
+				def records = readFile file: 'test1.csv'
 				def lines=records.readLines()
 			   
 				def lastline=lines.get(lines.size()-1).split(",")    
