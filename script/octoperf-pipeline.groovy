@@ -1,5 +1,6 @@
+pipeline {
+    agent any
 
-node {
 
     stage('Initialise') {
         /* Checkout the scripts */
