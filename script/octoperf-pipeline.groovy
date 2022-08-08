@@ -41,7 +41,7 @@ pipeline {
 	stage('test response time result'){
 		steps{
 			script{
-			perfReport errorFailedThreshold: 10, errorUnstableResponseTimeThreshold: 'Shift-Left.jtl:20', filterRegex: '', modePerformancePerTestCase: true, showTrendGraphs: true, sourceDataFiles: ${OUTPUT_PATH_JTL}
+			perfReport errorFailedThreshold: 10, errorUnstableResponseTimeThreshold: 'Shift-Left.jtl:20', filterRegex: '', modePerformancePerTestCase: true, showTrendGraphs: true, sourceDataFiles: "${OUTPUT_PATH_JTL}"
 			echo "${currentBuild.result}"
 			}
 		}
@@ -50,7 +50,7 @@ pipeline {
 		steps{
 			script{			
 			//bat 'del C:\\Training\\Jmeter\\jmeter\\test_plan\\test1.csv'
-			bat "C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\JMeterPluginsCMD.bat --generate-csv ${OUTPUT_PATH_CSV} --input-jtl ${OUTPUT_PATH_JTL} --plugin-type SynthesisReport"
+			bat "C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\JMeterPluginsCMD.bat --generate-csv "${OUTPUT_PATH_CSV}" --input-jtl "${OUTPUT_PATH_JTL}" --plugin-type SynthesisReport"
 			
 			}
 		}
@@ -59,7 +59,7 @@ pipeline {
 		steps{
 			script{
 			
-				def records = readFile file: ${OUTPUT_PATH_CSV}
+				def records = readFile file: "${OUTPUT_PATH_CSV}"
 				def lines=records.readLines()
 			   
 				def lastline=lines.get(lines.size()-1).split(",")    
