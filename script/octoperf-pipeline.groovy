@@ -50,7 +50,7 @@ pipeline {
 		steps{
 			script{			
 			//bat 'del C:\\Training\\Jmeter\\jmeter\\test_plan\\test1.csv'
-			bat "C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\JMeterPluginsCMD.bat --generate-csv "${OUTPUT_PATH_CSV}" --input-jtl "${OUTPUT_PATH_JTL}" --plugin-type SynthesisReport"
+			bat "C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\JMeterPluginsCMD.bat --generate-csv \"${OUTPUT_PATH_CSV}\" --input-jtl \"${OUTPUT_PATH_JTL}\" --plugin-type SynthesisReport"
 			
 			}
 		}
