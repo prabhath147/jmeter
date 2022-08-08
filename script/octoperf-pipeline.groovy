@@ -1,4 +1,4 @@
-#!/usr/bin/env groovy
+
 node {
 
     stage('Initialise') {
@@ -56,9 +56,9 @@ node {
 				def lastline=lines.get(lines.size()-1).split(",")    
 				  
 				echo "${lastline[8]}"
-				float f = Float.valueOf(lastline[8]); 
-				echo "${f}"
-				if(f<3){
+				float throughput = Float.valueOf(lastline[8]); 
+				echo "${throughput}"
+				if(throughput<3){
 				  currentBuild.result='Failure'
 				}
 			}
@@ -66,7 +66,7 @@ node {
 	stage('delete Jmeter files'){
 		
 			dir("${WORKSPACE}\\test_plan") {
-			bat 'cd'
+			
 			bat 'del C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl'
 			bat 'del C:\\Training\\Jmeter\\jmeter\\test_plan\\test1.csv'
 			 }
