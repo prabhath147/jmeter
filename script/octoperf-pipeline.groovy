@@ -3,6 +3,7 @@ pipeline {
 
 	stages{
     stage('Initialise') {
+	steps{
         /* Checkout the scripts */
         checkout scm: [
                 $class: 'GitSCM',
@@ -15,6 +16,7 @@ pipeline {
                 branches: [[name: "main"]]
         ], poll: false
     }
+	}
 
 	stage('Jmeter'){
 		
