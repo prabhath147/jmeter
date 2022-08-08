@@ -24,7 +24,7 @@ node {
 	stage('Jmeter test file'){
 		
 			dir("${WORKSPACE}\\test_plan") {
-			bat 'del Shift-Left.jtl'
+			bat 'del C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl'
 			bat 'C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\jmeter.bat -n -t Test_Plan3.jmx -l C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl'
 			 }
 		
@@ -62,7 +62,13 @@ node {
 				  currentBuild.result='Failure'
 				}
 			}
+	}
+	stage('delete Jmeter files'){
 		
+			dir("${WORKSPACE}\\test_plan") {
+			bat 'cd'
+			
+			 }
 		
 	}
 }
