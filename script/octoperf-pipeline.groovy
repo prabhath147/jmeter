@@ -20,14 +20,10 @@ node {
 			echo 'Jmeter'
 		
 	}
-	stage('Execute Performance Tests') {
-        dir("${WORKSPACE}/test plan") {
-			bat 'C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\jmeter.bat -n -t Test_Plan3.jmx -l Shift-Left.jtl'
-        }
-      }
+	
 	stage('Jmeter test file'){
 		
-			dir("${WORKSPACE}/test plan") {
+			dir("${WORKSPACE}\\test plan") {
 			bat 'del Shift-Left.jtl'
 			bat 'C:\\Training\\Jmeter\\apache-jmeter-5.5\\bin\\jmeter.bat -n -t Test_Plan3.jmx -l C:\\Training\\Jmeter\\jmeter\\test plan\\Shift-Left.jtl'
 			 }
