@@ -22,7 +22,7 @@ node {
 	}
 	stage('Execute Performance Tests') {
         dir("${WORKSPACE}/test plan") {
-			bat 'c:\\apache-jmeter\\apache-jmeter\\bin\\jmeter.bat -n -t Shift-Left.jmx -l Shift-Left.jtl'
+			bat 'C:\\apache-jmeter\\apache-jmeter\\bin\\jmeter.bat -n -t Shift-Left.jmx -l Shift-Left.jtl'
         }
       }
 	stage('Jmeter test file'){
