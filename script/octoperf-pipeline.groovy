@@ -67,8 +67,8 @@ node {
 		
 			dir("${WORKSPACE}\\test_plan") {
 			bat 'cd'
-			bat 'del Shift-Left.jtl'
-			bat 'del test1.csv'
+			bat 'del C:\\Training\\Jmeter\\jmeter\\test_plan\\Shift-Left.jtl'
+			bat 'del C:\\Training\\Jmeter\\jmeter\\test_plan\\test1.csv'
 			 }
 		
 	}
